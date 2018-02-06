@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Title from './component/title'
+import Title from './component/Title'
 import { shallow } from 'enzyme'
+import RecipesContainer from './recipes/RecipesContainer'
 describe('<App />',() => {
   const app = shallow(<App />)
   const title = <Title content="All Recipes" />

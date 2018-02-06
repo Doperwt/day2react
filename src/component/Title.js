@@ -1,6 +1,6 @@
 import React, { PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import './title.css'
+import './Title.css'
 class Title extends PureComponent {
   static propTypes = {
     content: PropTypes.string.isRequired,
