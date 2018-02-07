@@ -7,14 +7,17 @@ import PropTypes from 'prop-types'
 class LikeButton extends PureComponent {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
-    liked: PropTypes.bool.isRequired,
+    liked: PropTypes.bool,
   }
+
   classNames() {
     const { liked } = this.props
+
     let classes = 'like'
     if (liked) { classes += ' liked'}
     return classes
   }
+
   toggleLike() {
     this.props.onChange()
   }

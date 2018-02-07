@@ -1,11 +1,21 @@
 import React, { PureComponent } from 'react'
 import Title from "../component/Title"
 import RecipeItem from "./RecipeItem"
+import PropTypes from "prop-types"
 
 class RecipesContainer extends PureComponent {
-  renderRecipe(recipe, index) {
-    return <RecipeItem key={index} { ...recipe} />
+  static propType = {
+    recipes: PropTypes.string.isRequired,
+    updateRecipe: PropTypes.func.isRequired
   }
+  renderRecipe(recipe, index) {
+    return <RecipeItem key={index} { ...recipe} updateRecipe={this.props.updateRecipe} />
+  }
+  // updateItem(){
+  //   console.log(this.props)
+  //   const { _id, liked} = this.props
+  //   this.updateRecipe(_id,{ liked: !liked } )
+  // }
 
   render(){
     return(
@@ -13,9 +23,8 @@ class RecipesContainer extends PureComponent {
         <header>
           <Title content="Recipes" />
         </header>
-
-        <main>
-          { this.props.recipes.map(this.renderRecipe)}
+        <main onChange={this.updateRecipe}>
+          { this.props.recipes.map(this.renderRecipe.bind(this))}
         </main>
       </div>
     )
