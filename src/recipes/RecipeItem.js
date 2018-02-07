@@ -25,7 +25,9 @@ class RecipeItem extends PureComponent{
             {vegan && <li><img src={Vegan} alt="vegan" /></li>}
             {vegetarian &&<li><img src={Vegetarian} alt="vegetarian" /></li>}
           </ul>
-          <LikeButton />
+          <footer>
+                <LikeButton onChange={this.toggleLike} />
+              </footer>
         </div>
       </article>
      )

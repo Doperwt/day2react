@@ -9,6 +9,7 @@ const recipes = [
     vegan: false,
     vegetarian: true,
     pescatarian: false,
+    liked: false,
   },
   {
     title: 'Paella',
@@ -16,6 +17,7 @@ const recipes = [
     vegan: false,
     vegetarian: false,
     pescatarian: true,
+    liked: false,
   },
   {
     title: 'Spare ribs',
@@ -23,6 +25,7 @@ const recipes = [
     vegan: false,
     vegetarian: false,
     pescatarian: false,
+    liked: false,
   },
   {
     title: 'Agedashi Tofu',
@@ -30,12 +33,22 @@ const recipes = [
     vegan: true,
     vegetarian: true,
     pescatarian: false,
+    liked: false,
   },
 ]
 
 
 class App extends Component {
+  constructor() {
+  super()
+
+  this.state = {
+    recipes: recipes
+  }
+}
+
   render() {
+    const { recipes } = this.state
     return (
       <div>
         <Title content="All Recipes" />
