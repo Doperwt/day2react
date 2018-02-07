@@ -7,10 +7,9 @@ import { connect} from 'react-redux'
 class RecipesContainer extends PureComponent {
   static propType = {
     recipes: PropTypes.string.isRequired,
-    updateRecipe: PropTypes.func.isRequired
   }
   renderRecipe(recipe, index) {
-    return <RecipeItem key={index} { ...recipe} updateRecipe={this.props.updateRecipe} />
+    return <RecipeItem key={index} { ...recipe}  />
   }
   // updateItem(){
   //   console.log(this.props)
@@ -24,7 +23,7 @@ class RecipesContainer extends PureComponent {
         <header>
           <Title content='Recipes' />
         </header>
-        <main onChange={this.updateRecipe}>
+        <main >
           { this.props.recipes.map(this.renderRecipe.bind(this))}
         </main>
       </div>

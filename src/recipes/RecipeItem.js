@@ -4,6 +4,8 @@ import Pescatarian from '../images/pescatarian.svg'
 import Vegan from '../images/vegan.svg'
 import Vegetarian from '../images/vegetarian.svg'
 import LikeButton from '../component/LikeButton'
+import { connect } from 'react-redux'
+import likeRecipe from '../actions/recipes/like'
 
 class RecipeItem extends PureComponent{
   static propTypes = {
@@ -14,12 +16,14 @@ class RecipeItem extends PureComponent{
   vegetarian: PropTypes.bool,
   pescatarian: PropTypes.bool,
   liked: PropTypes.bool,
-  updateRecipe: PropTypes.func.isRequired
   }
+
   toggleLike(){
-    const { updateRecipe, _id, liked } = this.props
-    updateRecipe(_id, { liked: !liked })
-   }
+    const {  _id } = this.props
+    this.props.likeRecipe(_id)
+    }
+   
+
   render(){
     const { title, summary,vegan,vegetarian,pescatarian, liked} = this.props
     return(
@@ -38,4 +42,5 @@ class RecipeItem extends PureComponent{
      )
   }
 }
-export default RecipeItem
+
+export default connect(null, {likeRecipe})(RecipeItem)
