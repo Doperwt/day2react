@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react'
-import Title from "../component/Title"
-import RecipeItem from "./RecipeItem"
-import PropTypes from "prop-types"
+import Title from '../component/Title'
+import RecipeItem from './RecipeItem'
+import PropTypes from 'prop-types'
+import { connect} from 'react-redux'
 
 class RecipesContainer extends PureComponent {
   static propType = {
@@ -19,9 +20,9 @@ class RecipesContainer extends PureComponent {
 
   render(){
     return(
-      <div className="recipes wrapper">
+      <div className='recipes wrapper'>
         <header>
-          <Title content="Recipes" />
+          <Title content='Recipes' />
         </header>
         <main onChange={this.updateRecipe}>
           { this.props.recipes.map(this.renderRecipe.bind(this))}
@@ -30,4 +31,6 @@ class RecipesContainer extends PureComponent {
     )
   }
 }
-export default RecipesContainer
+const mapStateToProps = ({ recipes }) => ({ recipes})
+
+export default connect(mapStateToProps)(RecipesContainer)
